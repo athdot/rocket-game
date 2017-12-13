@@ -511,7 +511,7 @@ function run(){
   }else if(place == 6){
    play();
   }
-  },25);
+  },15);
 }
 
 run();
