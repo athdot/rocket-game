@@ -323,10 +323,10 @@ function play(){
   	cssd =  randInt(-0.1,0.1);
   }
   
-  if(ypos > gameField.height-(15+gameField.width/7)){
-  	ypos -= (ypos-(gameField.height-(15+gameField.width/7)))/15;
-  }else if(ypos < gameField.height-(15+gameField.width/7)){
-  	ypos += ((gameField.height-(15+gameField.width/7))-ypos)/15;
+  if(ypos > gameField.height-(15+150)){
+  	ypos -= (ypos-(gameField.height-(15+150)))/15;
+  }else if(ypos < gameField.height-(15+150)){
+  	ypos += ((gameField.height-(15+150))-ypos)/15;
   }
   
   xpos = xpos + dg/5;
