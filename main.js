@@ -95,8 +95,8 @@ function newObj(){
   }else{
   string += randInt(1,obstaclez.length-1) + ",";
   }
-  string += (randInt(-10,10)/25) + ",";
-  string += randInt(6,8)*1.75 + ",";
+  string += (randInt(-10,10)/20) + ",";
+  string += randInt(6,8)*1.5 + ",";
   string += "-100";
   string += "," + randInt(1,(gameField.width-101));
   string += "," + randInt(0,360);
@@ -293,7 +293,7 @@ document.addEventListener('keyup', function(event) {
 var dg = 0;
 var cssd = 0;
 function play(){
-	distance += 0.0125;
+	distance += 0.01;
   
   if(distance > highscore){
   	highscore = distance;
@@ -310,10 +310,10 @@ function play(){
   	ctx.drawImage(ims,num,vs[3],100,100);
   }
   updateArray();
-  if(starSpeed > 15){
-  	starSpeed -= 0.05;
-  }else if(starSpeed < 15){
-  	starSpeed += 0.05;
+  if(starSpeed > 12){
+  	starSpeed -= 0.025;
+  }else if(starSpeed < 12){
+  	starSpeed += 0.025;
   }
   if((keyDown === "left" || mouseDown && xpos+75 > mousePos.x+15) && xpos > 60){
     cssd = -30;
@@ -329,12 +329,12 @@ function play(){
   	ypos += ((gameField.height-(15+150))-ypos)/15;
   }
   
-  xpos = xpos + dg/4;
+  xpos = xpos + dg/5;
   
   if(dg > cssd){
-  	dg -= (dg-cssd)/12;
+  	dg -= (dg-cssd)/15;
   }else if(dg < cssd){
-  	dg += (cssd-dg)/12;
+  	dg += (cssd-dg)/15;
   }
   
   //end bounds if statements
@@ -344,9 +344,9 @@ function play(){
   	cssd = 0;
   }
   if(dg > cssd){
-  	dg -= 0.25;
+  	dg -= 0.2;
   }else if(dg < cssd){
-  	dg += 0.25;
+  	dg += 0.2;
   }
 }
 
@@ -496,7 +496,7 @@ var xpos = gameField.width/2-75;
 var ypos = gameField.height+100;
 var distance;
 function run(){
-	starSpeed = 2.5;
+	starSpeed = 2;
   setInterval(function(){
   	clear();
     renderStars();
@@ -523,7 +523,7 @@ function run(){
   }else if(place == 6){
    play();
   }
-  },25);
+  },20);
 }
 
 run();
