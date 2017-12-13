@@ -12,10 +12,6 @@ var obstaclez = [
 "obstacles/ast.png",
 "obstacles/earth.png",
 ];
-
-
-//OK so now we make mobile game based off of what someone did on scratch
-//first we declare all the available skins in a reealy long array
 var skin = [
 "ships/sputnik.png",
 "ships/soyuz.png",
@@ -27,14 +23,9 @@ var skin = [
 "ships/box.png",
 "ships/xwing.png",
 ];
-
 var deathImages = [
 "death/death1.png",
 ]
-
-
-
-
 var gameField = document.createElement("canvas");
 gameField.width = window.innerWidth;
 gameField.height = window.innerHeight;
@@ -42,18 +33,15 @@ gameField.id = "gameField";
 gameField.style = "background-color: rgb(0,26,51); position:absolute; top: 0; left: 0;";
 document.body.appendChild(gameField);
 var ctx = gameField.getContext("2d");
-//game background set
-
 var place = 0;
 var currentShip = 0;
 var cleverLosePhrases = ["Missed it by thaaaaat much...","Aaaaah! Missed it by that much!","Sooooo Close","One more time please","As my Grandmother used to say, watch out for the astroid!","Come on, try harder!","I believe in you","Oooops...","NooooOOooOooo...","Impossible!","And he was never heard from again...","Whelp! That one failed, might as well do another one...","[Player] left the game...","Test Subject 1032 is now MIA","Staaaaaaars...","Is the glass half full? Or is it empty?","What came first, The Chicken or the Egg?","Yeeeeeeeeeeeeee","Yeet","I think I saw a Yeti over there somewhere...","Did you know that 100% of human beings die from death?","Glad I wasn't him...","That was NASTY","SPLAT!","Ahh Dang... There goes another one...","We have limited pilots, you know...","Watching that was funnier than pretending to be a carrot!"];
 var obs = new Array(0);
 newObj();
 updateArray();
-//obs structure: {obstacle,slope,speed,ypos,start xpos, rotation,rotationspeed}
 function updateArray(){
-	if(distance < 20){
-	var newArray = randInt(1,100-distance*4);
+	if(distance*3 < 20){
+	var newArray = randInt(1,100-distance*12);
   }else{
   var newArray = randInt(1,100-20*4);
   }
@@ -523,7 +511,7 @@ function run(){
   }else if(place == 6){
    play();
   }
-  },20);
+  },25);
 }
 
 run();
