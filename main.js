@@ -67,7 +67,7 @@ function updateArray(){
   while(i < len){
   	if(obs[i] != null && obs[i] != ""){
     	var current = obs[i].split(",");
-      if((parseInt(current[3]) < ypos+gameField.width/10) && (parseInt(current[3]) > ypos-gameField.width/10) && (current[3]*current[1]+parseInt(current[4])) < xpos+gameField.width/18 && (current[3]* current[1]+parseInt(current[4])) > xpos-gameField.width/18 && (current[3]* current[1]+parseInt(current[4])) > 0 && (current[3]* current[1]+parseInt(current[4])) < gameField.width){
+      if((parseInt(current[3]) < ypos+gameField.width/14) && (parseInt(current[3]) > ypos-gameField.width/14) && (current[3]*current[1]+parseInt(current[4])) < xpos+gameField.width/21 && (current[3]* current[1]+parseInt(current[4])) > xpos-gameField.width/21 && (current[3]* current[1]+parseInt(current[4])) > 0 && (current[3]* current[1]+parseInt(current[4])) < gameField.width){
       	place = 3;
       }
       if((current[3]*current[1]+parseInt(current[4])) < -100 || (current[3]*current[1]+parseInt(current[4])) > gameField.width+100 || current[3] > gameField.height){
