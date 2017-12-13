@@ -315,9 +315,9 @@ function play(){
   }else if(starSpeed < 12){
   	starSpeed += 0.025;
   }
-  if((keyDown === "left" || mouseDown && xpos+gameField.width/14 > mousePos.x+15) && xpos > 60){
+  if((keyDown === "left" || mouseDown && xpos+75 > mousePos.x+15) && xpos > 60){
     cssd = -30;
-  }else if((keyDown === "right" || mouseDown && xpos+gameField.width/14 < mousePos.x-15) && xpos < gameField.width-(50+gameField.width/7)){
+  }else if((keyDown === "right" || mouseDown && xpos+75 < mousePos.x-15) && xpos < gameField.width-(50+150)){
     cssd = 30;
   }else{
   	cssd =  randInt(-0.1,0.1);
