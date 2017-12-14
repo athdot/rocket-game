@@ -536,6 +536,7 @@ if(previousMs < 0){
 	previousMs = 1000-previousMs;
 }
 var currentMs = beginMs;
+alert("1.7.3");
 run();
 
-//Version 1.7.2
+//Version 1.7.3
