@@ -300,9 +300,9 @@ function play(){
   	ctx.drawImage(ims,num,vs[3],100,100);
   }
   updateArray();
-  if(starSpeed > 12){
+  if(starSpeed > 12*speedMs/20){
   	starSpeed -= speedMs/1000;
-  }else if(starSpeed < 12){
+  }else if(starSpeed < 12*speedMs/20){
   	starSpeed += speedMs/1000;
   }
   if((keyDown === "left" || mouseDown && xpos+75 > mousePos.x+15) && xpos > 60){
@@ -328,9 +328,9 @@ function play(){
   }
   
   //end bounds if statements
-  if(xpos <= 10 && keyDown === "left"){
+  if(xpos <= 70 && keyDown === "left"){
   	cssd = 0;
-  }else if(xpos >= gameField.width-175 && keyDown === "right"){
+  }else if(xpos >= gameField.width-170 && keyDown === "right"){
   	cssd = 0;
   }
   if(dg > cssd){
