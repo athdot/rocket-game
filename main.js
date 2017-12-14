@@ -87,7 +87,7 @@ function newObj(){
   }
   string += (randInt(-10,10)/20) + ",";
   string += randInt(6,8) + ",";
-  string += "-100";
+  string += "-200";
   string += "," + randInt(1,(gameField.width-101));
   string += "," + randInt(0,360);
   string += "," + randInt(-40,40)/10;
