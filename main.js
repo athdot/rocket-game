@@ -53,7 +53,6 @@ function updateArray(){
   	newObj();
   }
   var len = obs.length;
-  console.log(len);
   var i = 0;
   while(i < len){
   	if(obs[i] != null && obs[i] != ""){
