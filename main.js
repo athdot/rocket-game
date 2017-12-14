@@ -485,9 +485,14 @@ function loseScreen(){
 var xpos = gameField.width/2-75;
 var ypos = gameField.height+100;
 var distance;
+var ratioMs;
 function run(){
 	starSpeed = 2;
   setInterval(function(){
+	d = new Date();
+	currentMs = d.getMilliseconds();
+	ratioMs = currentMs-(previousMs+20);
+	speedMs-ratioMs;
   	clear();
     renderStars();
 	if(place == 0){
@@ -513,10 +518,17 @@ function run(){
   }else if(place == 6){
    play();
   }
+	  previousMs = currentMs;
   },speedMs);
 	//average speed is 20ms
 }
-
+var d = new Date();
+var beginMs = d.getMilliseconds();
+var previousMs = beginMs-20;
+if(previousMs < 0){
+	previousMs = 1000-previousMs;
+}
+var currentMs = beginMs;
 run();
 
 //Version 1.6.4
