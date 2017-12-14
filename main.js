@@ -24,6 +24,7 @@ var skin = [
 "ships/police.png",
 "ships/box.png",
 "ships/xwing.png",
+"ships/plunger.png",
 ];
 var deathImages = [
 "death/death1.png",
@@ -363,7 +364,6 @@ function skinScreen(){
     }else{
     	ctx.lineWidth = 2;
     }
-    ctx.lineWidth = 2;
     ctx.stroke();
     isa = isa + 1;
     if(locationClicked((gameField.width/2-((linewidth+0.63)/2)*110)+110*l-5,70+line*110-5,85,85)){
@@ -535,4 +535,4 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.6.9
+//Version 1.7.0
