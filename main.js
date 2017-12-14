@@ -42,13 +42,13 @@ var obs = new Array(0);
 newObj();
 updateArray();
 function updateArray(){
-	var ammout = Math.floor(gameField.width/40);
+	var ammout = Math.floor(gameField.width/40)+1;
 	if(distance*3 < ammout){
 	var cdist = distance;
 	}else{
-		var cdist = distance;
+		var cdist = Math.floor(ammout/3)+1;
 	}
-	var newArray = randInt(1,100-distance*12);
+	var newArray = randInt(1,100-cdist*12);
 	
 
   if(newArray == 1){
