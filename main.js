@@ -9,6 +9,7 @@ imss.src="images/arrow.png";
 imss.style="display:none";
 document.body.appendChild(imss);
 var obstaclez = [
+"obstacles/poop.png",
 "obstacles/dstar.png",
 "obstacles/hal.png",
 "obstacles/ast.png",
@@ -85,9 +86,15 @@ function updateArray(){
 function newObj(){
 	var string = "";
   if(currentShip == 8){
-  string += randInt(0,obstaclez.length-1) + ",";
-  }else{
   string += randInt(1,obstaclez.length-1) + ",";
+  }else if(currentShip == 9){
+	  var test = randInt(0,obstaclez.length-1);
+	  if(test == 1){
+		test = 0;	  
+	  }
+   string += test + ",";
+  }else{
+  string += randInt(2,obstaclez.length-1) + ",";
   }
   string += (randInt(-10,10)/20) + ",";
   string += randInt(6,8) + ",";
@@ -535,4 +542,4 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.7.0
+//Version 1.7.1
