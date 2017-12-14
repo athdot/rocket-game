@@ -331,9 +331,9 @@ function play(){
   }
   
   //end bounds if statements
-  if(xpos <= 50 && keyDown === "left"){
+  if(xpos <= 150 && keyDown === "left"){
   	cssd = 0;
-  }else if(xpos >= gameField.width-250 && keyDown === "right"){
+  }else if(xpos >= gameField.width-350 && keyDown === "right"){
   	cssd = 0;
   }
   if(dg > cssd){
@@ -534,4 +534,4 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.6.4
+//Version 1.6.6
