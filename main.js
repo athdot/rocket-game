@@ -61,7 +61,7 @@ function updateArray(){
   var i = 0;
   while(i < len){
   	if(obs[i] != null && obs[i] != ""){
-    	var current = obs[i];
+    	var current = obs[i].split(",");
       if((parseInt(current[3]) < ypos+65) && (parseInt(current[3]) > ypos-65) && (current[3]*current[1]+parseInt(current[4])) < xpos+65 && (current[3]* current[1]+parseInt(current[4])) > xpos-65 && (current[3]* current[1]+parseInt(current[4])) > 0 && (current[3]* current[1]+parseInt(current[4])) < gameField.width){
       	place = 3;
       }
@@ -80,29 +80,29 @@ function updateArray(){
 }
 
 function newObj(){
-	var string = new Array(7);
+	var string = "";
   if(currentShip == 8){
-  string[0] = randInt(1,obstaclez.length-1);
+  string += randInt(1,obstaclez.length-1) + ",";
   }else if(currentShip == 9){
 	  var test = randInt(0,obstaclez.length-1);
 	  if(test == 1){
 		test = 0;	  
 	  }
-   string[0] = test;
+   string += test + ",";
   }else{
-  string[0] += randInt(2,obstaclez.length-1);
+  string += randInt(2,obstaclez.length-1) + ",";
   }
-  string[1] += (randInt(-10,10)/20);
-  string[2] += randInt(6,8);
-  string[3] += -200;
-  string[4] += randInt(1,(gameField.width-101));
-  string[5] += randInt(0,360);
-  string[6] += randInt(-40,40)/10;
+  string += (randInt(-10,10)/20) + ",";
+  string += randInt(6,8) + ",";
+  string += "-200";
+  string += "," + randInt(1,(gameField.width-101));
+  string += "," + randInt(0,360);
+  string += "," + randInt(-40,40)/10;
   obs[obs.length] = string;
 }
 
 function getObj(num){
-	return obs[num];
+	return obs[num].split(",");
 }
 
 //mousePositions
@@ -536,7 +536,6 @@ if(previousMs < 0){
 	previousMs = 1000-previousMs;
 }
 var currentMs = beginMs;
-alert("1.7.4");
 run();
 
-//Version 1.7.4
+//Version 1.7.3
