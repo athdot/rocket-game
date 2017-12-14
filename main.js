@@ -67,11 +67,7 @@ function updateArray(){
       }
       if((current[3]*current[1]+parseInt(current[4])) < -100 || (current[3]*current[1]+parseInt(current[4])) > gameField.width+100 || current[3] > gameField.height){
       	obs[i] = obs[obs.length-1];
-        var ys = new Array(obs.length-1);
-        for(var j = 0; j < obs.length-1; j++){
-        	ys[j] = obs[j];
-        }
-        obs = ys;
+        obs.length--;
         len--;
       }else{
       current[3] = (parseInt(current[2]) + parseInt(current[3]))*speedMs/20 + "";
