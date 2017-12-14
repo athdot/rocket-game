@@ -56,7 +56,7 @@ function updateArray(){
   var newArray = randInt(1,100-20*4);
   }
 
-  if(newArray == 1){
+  if(newArray == 1 || obs.length < 3){
   	newObj();
   }
   var len = obs.length;
