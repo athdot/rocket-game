@@ -81,7 +81,7 @@ function updateArray(){
 }
 
 function newObj(){
-	var windowMax = Math.round(ammout*(2/3));
+	var windowMax = Math.round(Math.floor(gameField.width/40)*(2/3));
 	var string = "";
   if(currentShip == 8){
   string += randInt(0,obstaclez.length-1) + ",";
