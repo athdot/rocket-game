@@ -44,11 +44,12 @@ updateArray();
 function updateArray(){
 	var ammout = Math.floor(gameField.width/40);
 	if(distance*3 < ammout){
+	var cdist = distance;
+	}else{
+		var cdist = distance;
+	}
 	var newArray = randInt(1,100-distance*12);
-  }else{
-  var newArray = randInt(1,100-ammout*4);
-  }
-	console.log(ammout);
+	
 
   if(newArray == 1){
   	newObj();
@@ -80,6 +81,7 @@ function updateArray(){
 }
 
 function newObj(){
+	var windowMax = Math.round(ammout*(2/3));
 	var string = "";
   if(currentShip == 8){
   string += randInt(0,obstaclez.length-1) + ",";
@@ -92,7 +94,9 @@ function newObj(){
   string += "," + randInt(1,(gameField.width-101));
   string += "," + randInt(0,360);
   string += "," + randInt(-40,40)/10;
+	if(obs.length < windowMax){
   obs[obs.length] = string;
+	}
 }
 
 function getObj(num){
