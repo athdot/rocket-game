@@ -328,9 +328,9 @@ function play(){
   }
   
   //end bounds if statements
-  if(xpos <= 70 && keyDown === "left"){
+  if(xpos <= 50 && keyDown === "left"){
   	cssd = 0;
-  }else if(xpos >= gameField.width-170 && keyDown === "right"){
+  }else if(xpos >= gameField.width-250 && keyDown === "right"){
   	cssd = 0;
   }
   if(dg > cssd){
