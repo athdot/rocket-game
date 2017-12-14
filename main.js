@@ -1,3 +1,5 @@
+var speedMs = 20;
+
 var style = document.createElement("style");
 style.innerHTML = "@font-face { \n font-family: 'spaceFont'; \n src: url(https://athdot.github.io/files/trench100free.otf); \n }";
 document.head.appendChild(style);
@@ -84,7 +86,7 @@ function newObj(){
   string += randInt(1,obstaclez.length-1) + ",";
   }
   string += (randInt(-10,10)/20) + ",";
-  string += randInt(6,8)*1.5 + ",";
+  string += randInt(8,12)*speedMs/20 + ",";
   string += "-100";
   string += "," + randInt(1,(gameField.width-101));
   string += "," + randInt(0,360);
@@ -281,7 +283,7 @@ document.addEventListener('keyup', function(event) {
 var dg = 0;
 var cssd = 0;
 function play(){
-	distance += 0.01;
+	distance += speedMs/2000;
   
   if(distance > highscore){
   	highscore = distance;
@@ -299,9 +301,9 @@ function play(){
   }
   updateArray();
   if(starSpeed > 12){
-  	starSpeed -= 0.025;
+  	starSpeed -= speedMs/1000;
   }else if(starSpeed < 12){
-  	starSpeed += 0.025;
+  	starSpeed += speedMs/1000;
   }
   if((keyDown === "left" || mouseDown && xpos+75 > mousePos.x+15) && xpos > 60){
     cssd = -30;
@@ -317,12 +319,12 @@ function play(){
   	ypos += ((gameField.height-(15+150))-ypos)/15;
   }
   
-  xpos = xpos + dg/5;
+  xpos = xpos + dg/(5/(speedMs/10));
   
   if(dg > cssd){
-  	dg -= (dg-cssd)/15;
+  	dg -= (dg-cssd)/(30/(speedMs/10));
   }else if(dg < cssd){
-  	dg += (cssd-dg)/15;
+  	dg += (cssd-dg)/(30/(speedMs/10));
   }
   
   //end bounds if statements
@@ -511,7 +513,8 @@ function run(){
   }else if(place == 6){
    play();
   }
-  },15);
+  },speedMs);
+	//average speed is 20ms
 }
 
 run();
