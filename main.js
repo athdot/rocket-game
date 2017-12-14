@@ -493,7 +493,7 @@ function run(){
 	d = new Date();
 	currentMs = d.getMilliseconds();
 	ratioMs = currentMs-(previousMs+20);
-	speedMs-ratioMs;
+	speedMs+ratioMs;
   	clear();
     renderStars();
 	if(place == 0){
