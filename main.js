@@ -69,8 +69,8 @@ function updateArray(){
         obs = ys;
         len--;
       }else{
-      current[3] = (parseInt(current[2]) + parseInt(current[3])) + "";
-      current[5] = (parseInt(current[5]) + parseInt(current[6])) + "";
+      current[3] = (parseInt(current[2]) + parseInt(current[3]))*speedMs/20 + "";
+      current[5] = (parseInt(current[5]) + parseInt(current[6]))*speedMs/20 + "";
       obs[i] = current[0] + "," + current[1] + "," + current[2] + "," + current[3] + "," + current[4]  + "," + current[5]  + "," + current[6];   
       }
 		}
@@ -86,7 +86,7 @@ function newObj(){
   string += randInt(1,obstaclez.length-1) + ",";
   }
   string += (randInt(-10,10)/20) + ",";
-  string += randInt(8,12)*speedMs/20 + ",";
+  string += randInt(6,8) + ",";
   string += "-100";
   string += "," + randInt(1,(gameField.width-101));
   string += "," + randInt(0,360);
