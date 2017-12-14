@@ -357,10 +357,11 @@ function skinScreen(){
   	ctx.drawImage(im,(gameField.width/2-((linewidth+0.63)/2)*110)+110*l,70+line*110,75,75);
     ctx.beginPath();
     ctx.rect((gameField.width/2-((linewidth+0.63)/2)*110)+110*l-5,70+line*110-5,85,85);
+	  ctx.strokeStyle = "white";
     if(currentShip == isa){
-   	 ctx.strokeStyle = "yellow";
+   	 ctx.lineWidth = 4;
     }else{
-    	ctx.strokeStyle = "white";
+    	ctx.lineWidth = 2;
     }
     ctx.lineWidth = 2;
     ctx.stroke();
@@ -534,4 +535,4 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.6.7
+//Version 1.6.8
