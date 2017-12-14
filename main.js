@@ -48,6 +48,7 @@ function updateArray(){
   }else{
   var newArray = randInt(1,100-ammout*4);
   }
+	console.log(ammout);
 
   if(newArray == 1){
   	newObj();
