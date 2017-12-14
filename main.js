@@ -42,14 +42,11 @@ var obs = new Array(0);
 newObj();
 updateArray();
 function updateArray(){
-	var ammout = Math.floor(gameField.width/40)+1;
-	if(distance*3 < ammout){
-	var cdist = distance;
-	}else{
-		var cdist = Math.floor(ammout/3)+1;
-	}
-	var newArray = randInt(1,100-cdist*12);
-	
+	if(distance*3 < 20){
+	var newArray = randInt(1,100-distance*12);
+  }else{
+  var newArray = randInt(1,100-20*4);
+  }
 
   if(newArray == 1){
   	newObj();
@@ -81,7 +78,6 @@ function updateArray(){
 }
 
 function newObj(){
-	var windowMax = Math.round(Math.floor(gameField.width/40)*(2/3));
 	var string = "";
   if(currentShip == 8){
   string += randInt(0,obstaclez.length-1) + ",";
@@ -94,9 +90,7 @@ function newObj(){
   string += "," + randInt(1,(gameField.width-101));
   string += "," + randInt(0,360);
   string += "," + randInt(-40,40)/10;
-	if(obs.length < windowMax){
   obs[obs.length] = string;
-	}
 }
 
 function getObj(num){
@@ -497,7 +491,7 @@ function run(){
 	d = new Date();
 	currentMs = d.getMilliseconds();
 	ratioMs = currentMs-(previousMs+20);
-	speedMs+ratioMs;
+	speedMs-ratioMs;
   	clear();
     renderStars();
 	if(place == 0){
