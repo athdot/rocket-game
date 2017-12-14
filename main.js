@@ -42,6 +42,14 @@ var obs = new Array(0);
 newObj();
 updateArray();
 function updateArray(){
+	var n;
+	if(gameField.width > 1500){
+		n = 10;	
+	}else if(gameField.width > 1000){
+		n = 20;	
+	}else{
+		n = 30;	
+	}
 	if(distance*3 < 20){
 	var newArray = randInt(1,100-distance*12);
   }else{
