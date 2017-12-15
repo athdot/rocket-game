@@ -82,15 +82,15 @@ function updateArray(){
 function newObj(){
 	var string = new Array(7);
   if(currentShip == 8){
-  string[0] = randInt(1,obstaclez.length-1);
+  string[0] = ""+randInt(1,obstaclez.length-1);
   }else if(currentShip == 9){
 	  var test = randInt(0,obstaclez.length-1);
 	  if(test == 1){
 		test = 0;	  
 	  }
-   string[0] = test;
+   string[0] = ""+test;
   }else{
-  string[0] += randInt(2,obstaclez.length-1);
+  string[0] += ""+randInt(2,obstaclez.length-1);
   }
   string[1] += (randInt(-10,10)/20);
   string[2] += randInt(6,8);
@@ -536,7 +536,7 @@ if(previousMs < 0){
 	previousMs = 1000-previousMs;
 }
 var currentMs = beginMs;
-alert("1.7.4");
+alert("1.7.5");
 run();
 
-//Version 1.7.4
+//Version 1.7.5
