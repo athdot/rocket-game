@@ -62,7 +62,7 @@ function updateArray(){
   while(i < len){
   	if(obs[i] != null && obs[i] != ""){
     	var current = obs[i].split(",");
-      if((parseInt(current[3]) < ypos+65) && (parseInt(current[3]) > ypos-65) && (current[3]*current[1]+parseInt(current[4])) < xpos+65 && (current[3]* current[1]+parseInt(current[4])) > xpos-65 && (current[3]* current[1]+parseInt(current[4])) > 0 && (current[3]* current[1]+parseInt(current[4])) < gameField.width){
+      if((parseInt(current[3]) < ypos+140) && (parseInt(current[3]) > ypos+10) && (current[3]*current[1]+parseInt(current[4])) < xpos+140 && (current[3]* current[1]+parseInt(current[4])) > xpos+10 && (current[3]* current[1]+parseInt(current[4])) > 0 && (current[3]* current[1]+parseInt(current[4])) < gameField.width){
       	place = 3;
       }
       if((current[3]*current[1]+parseInt(current[4])) < -100 || (current[3]*current[1]+parseInt(current[4])) > gameField.width+100 || current[3] > gameField.height){
@@ -538,4 +538,4 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.7.3
+//Version 1.7.6
