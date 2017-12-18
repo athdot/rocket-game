@@ -70,11 +70,11 @@ function updateArray(){
   	if(obs[i] != null && obs[i] != ""){
     	var current = obs[i].split(",");
       if(((parseInt(current[3]) < ypos+110) && (parseInt(current[3]) > ypos-55) && (current[3]*current[1]+parseInt(current[4])) < xpos+100 && (current[3]* current[1]+parseInt(current[4])) > xpos-50 && (current[3]* current[1]+parseInt(current[4])) > 0 && (current[3]* current[1]+parseInt(current[4])) < gameField.width)){
-      	if(parseInt(current[0]) != obstaclez.length-2){
+      	if(parseInt(current[0]) < obstaclez.length-2){
 	      place = 3;
-	}else if(parseInt(current[0]) != obstaclez.length-1){
+	}else if(parseInt(current[0]) == obstaclez.length-2){
 		gold++;	
-	}else{
+	}else if(parseInt(current[0]) == obstaclez.length-1){
 		emerald++;	
 	}
       }
@@ -557,5 +557,5 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.10.1
+//Version 1.10.2
 //Gold Update
