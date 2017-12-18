@@ -94,7 +94,7 @@ function updateArray(){
 
 function newObj(){
 	var string = "";
-	if(randInt(1,10) == 1){
+	if(randInt(1,100) == 1){
 		string += obstaclez.length-1 + ",";
 	}else if(currentShip == 8){
   string += randInt(1,obstaclez.length-2) + ",";
@@ -557,5 +557,5 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.10.2
+//Version 1.10.3
 //Gold Update
