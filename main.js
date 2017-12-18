@@ -153,8 +153,8 @@ for(i = 0; i < len; i++){
 function renderStars(){
 	var i;
 	var len = stars.length;
-	var x;
-	var y;
+	var x = stars[i].split(",")[0];
+	var y = stars[i].split(",")[1];
 	for(i = 0; i < len; i++){
   	if(stars[i].split(",")[2] === "1"){
 		x = stars[i].split(",")[0];
@@ -548,4 +548,4 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.7.8
+//Version 1.7.9
