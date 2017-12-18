@@ -500,7 +500,7 @@ var ratioMs;
 
 function run() {
     starSpeed = 2;
-    setInterval(function() {
+    setTimeout(function() {
         d = new Date();
         currentMs = d.getMilliseconds();
         ratioMs = currentMs - (previousMs + 20);
@@ -531,6 +531,7 @@ function run() {
             play();
         }
         previousMs = currentMs;
+        at();
     }, speedMs);
     //average speed is 20ms
 }
@@ -542,5 +543,7 @@ if (previousMs < 0) {
 }
 var currentMs = beginMs;
 run();
-
+function at(){
+    run();   
+}
 //Version 1.7.7
