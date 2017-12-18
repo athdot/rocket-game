@@ -26,6 +26,7 @@ var skin = [
 "ships/box.png",
 "ships/xwing.png",
 "ships/plunger.png",
+"ships/nyan.png",
 ];
 var deathImages = [
 "death/death1.png",
@@ -538,4 +539,4 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.7.9
+//Version 1.8.0
