@@ -66,7 +66,7 @@ function updateArray(){
   	if(obs[i] != null && obs[i] != ""){
     	var current = obs[i].split(",");
       if(((parseInt(current[3]) < ypos+110) && (parseInt(current[3]) > ypos-55) && (current[3]*current[1]+parseInt(current[4])) < xpos+100 && (current[3]* current[1]+parseInt(current[4])) > xpos-50 && (current[3]* current[1]+parseInt(current[4])) > 0 && (current[3]* current[1]+parseInt(current[4])) < gameField.width)){
-      	if(i != obs.length-2){
+      	if(parseInt(current[0]) != obs.length-1){
 	      place = 3;
 	}else{
 		gold++;	
@@ -546,5 +546,5 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.8.6
+//Version 1.8.7
 //Gold Update
