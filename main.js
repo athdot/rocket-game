@@ -58,8 +58,8 @@ function updateArray(){
   	newObj();
   }
   var len = obs.length;
-  var i = 0;
-  while(i < len){
+  var i;
+  for(i = 0; i < len; i++){
   	if(obs[i] != null && obs[i] != ""){
     	var current = obs[i].split(",");
       if((parseInt(current[3]) < ypos+140) && (parseInt(current[3]) > ypos-55) && (current[3]*current[1]+parseInt(current[4])) < xpos+55 && (current[3]* current[1]+parseInt(current[4])) > xpos+10 && (current[3]* current[1]+parseInt(current[4])) > 0 && (current[3]* current[1]+parseInt(current[4])) < gameField.width){
@@ -75,7 +75,6 @@ function updateArray(){
       obs[i] = current[0] + "," + current[1] + "," + current[2] + "," + current[3] + "," + current[4]  + "," + current[5]  + "," + current[6];   
       }
 		}
-    i++;
   }
 }
 
@@ -92,12 +91,7 @@ function newObj(){
   }else{
   string += randInt(2,obstaclez.length-1) + ",";
   }
-  string += (randInt(-10,10)/20) + ",";
-  string += randInt(6,8) + ",";
-  string += "-200";
-  string += "," + randInt(1,(gameField.width-101));
-  string += "," + randInt(0,360);
-  string += "," + randInt(-40,40)/10;
+  string += (randInt(-10,10)/20) + "," + randInt(6,8) + "," + "-200," + randInt(1,(gameField.width-101)) + "," + randInt(0,360) + "," + randInt(-40,40)/10;
   obs[obs.length] = string;
 }
 
@@ -145,7 +139,9 @@ gameField.oncontextmenu = function (e) {
 
 var starSpeed = 0;
 var stars = new Array(100);
-for(var i = 0; i < stars.length; i++){
+var i = 0;
+var len = stars.length;
+for(i = 0; i < len; i++){
 		if(randInt(0,gameField.height) == 1){
     	var ret = 1;
     }else{
@@ -155,20 +151,24 @@ for(var i = 0; i < stars.length; i++){
 }
 
 function renderStars(){
-	for(var i = 0; i < stars.length; i++){
+	var i;
+	var len = stars.length;
+	var x;
+	var y;
+	for(i = 0; i < len; i++){
   	if(stars[i].split(",")[2] === "1"){
-  		var x = stars[i].split(",")[0];
-  		var y = stars[i].split(",")[1];
+		x = stars[i].split(",")[0];
+		y = stars[i].split(",")[1];
   		ctx.fillStyle = "white";
   		ctx.fillRect(x,y,1,1);
     	stars[i] = x + "," + (parseInt(y)+starSpeed) + ",1";
   	}
     
     if(randInt(0,gameField.height) == 1){
-    	stars[i] = stars[i].split(",")[0] + "," + stars[i].split(",")[1] + ",1";
+    	stars[i] = x + "," + y + ",1";
     }
     
-    if(parseInt(stars[i].split(",")[1]) >= gameField.height){
+    if(parseInt(y) >= gameField.height){
     	if(randInt(0,gameField.height) == 1){
     		var ret = 1;
     	}else{
@@ -222,7 +222,8 @@ function drawFont(text,size,x,y,color){
 	ctx.fillStyle = color;
 	ctx.textBaseline = 'top';
   lines = 1;
-  for(var j = 0; j < lines; j++){
+	var j;
+  for(j = 0; j < lines; j++){
   var width = ctx.measureText(txt[j]).width;
   	if(width > gameField.width-60 && txt[j].split(" ").length != 1){
   		var linst = "";
@@ -242,7 +243,9 @@ function drawFont(text,size,x,y,color){
   	}
   }
   var lineplus = 0;
-  for(var i = 0; i < txt.length; i++){
+	var i;
+	var l = txt.length;
+  for(i = 0; i < l; i++){
   	width = ctx.measureText(txt[i]).width;
 		ctx.fillText(txt[i], x-width/2, y+lineplus);
     lineplus += size;
@@ -299,7 +302,9 @@ function play(){
   drawFont(Math.floor(distance),50,gameField.width-10*(Math.floor(distance) + "").length-20,20,"white");
   var im = shipImages(currentShip,dg);
 		ctx.drawImage(im,xpos,ypos,150,150);
-  for(var i = 0; i < obs.length; i++){
+	var i;
+	var l = obs.length;
+  for(i = 0; i < l; i++){
   	var vs = getObj(i);
     var ims = objImagesn(vs[0],vs[5]); 
     var num = vs[3]*vs[1];
@@ -355,7 +360,9 @@ function skinScreen(){
   var isa = 0;
   var linewidth = Math.floor(gameField.width/140);
   var l = 0;
-  for(var i = 0; i < skin.length; i++){
+	var i;
+	var ls = skin.length;
+  for(i = 0; i < ls; i++){
   	var im = shipImage(isa);
     
   	ctx.drawImage(im,(gameField.width/2-((linewidth+0.63)/2)*110)+110*l,70+line*110,75,75);
@@ -395,8 +402,9 @@ var highscore = 0;
 
 function shipImage(num){
   var coolIm = document.getElementById(""+num);
+	var im;
   if(coolIm == null){
-  	var im = document.createElement("img");
+ 	im = document.createElement("img");
     im.id = ""+num;
     im.style = "display:none;";
     im.src = skin[num];
@@ -424,8 +432,9 @@ function shipImages(num,rotation){
 
 function objImagen(num){
   var coolIm = document.getElementById("o"+num);
+	var im;
   if(coolIm == null){
-  	var im = document.createElement("img");
+  	im = document.createElement("img");
     im.id = "o"+num;
     im.style = "display:none;";
     im.src = obstaclez[num];
@@ -454,8 +463,9 @@ function objImagesn(num,rotation){
 function randLoseImg(){
 	var rand = randInt(0,deathImages.length-1);
   var deathIm = document.getElementById("death");
+	var im;
   if(deathIm == null){
-  	var im = document.createElement("img");
+  	im = document.createElement("img");
     im.id = "death";
     im.style = "display:none";
     im.src = deathImages[rand];
