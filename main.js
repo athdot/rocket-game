@@ -532,7 +532,7 @@ function run() {
         }
         previousMs = currentMs;
         at();
-    }, speedMs);
+    }, 20);
     //average speed is 20ms
 }
 var d = new Date();
