@@ -15,6 +15,7 @@ var obstaclez = [
 "obstacles/ast.png",
 "obstacles/earth.png",
 "images/coin.png",
+"images/emerald.png",
 ];
 var skin = [
 "ships/sputnik.png",
@@ -33,6 +34,7 @@ var deathImages = [
 "death/death1.png",
 ]
 var gold = 0;
+var emerald = 0;
 var gameField = document.createElement("canvas");
 gameField.width = window.innerWidth;
 gameField.height = window.innerHeight;
@@ -64,16 +66,19 @@ function updateArray(){
   var i = 0;
   while(i < len){
 	  var prevGold = gold;
+	  var prevEm = emerald;
   	if(obs[i] != null && obs[i] != ""){
     	var current = obs[i].split(",");
       if(((parseInt(current[3]) < ypos+110) && (parseInt(current[3]) > ypos-55) && (current[3]*current[1]+parseInt(current[4])) < xpos+100 && (current[3]* current[1]+parseInt(current[4])) > xpos-50 && (current[3]* current[1]+parseInt(current[4])) > 0 && (current[3]* current[1]+parseInt(current[4])) < gameField.width)){
-      	if(parseInt(current[0]) != obstaclez.length-1){
+      	if(parseInt(current[0]) != obstaclez.length-2){
 	      place = 3;
-	}else{
+	}else if(parseInt(current[0]) != obstaclez.length-1){
 		gold++;	
+	}else{
+		emerald++;	
 	}
       }
-      if(prevGold != gold || (current[3]*current[1]+parseInt(current[4])) < -200 || (current[3]*current[1]+parseInt(current[4])) > gameField.width+200 || current[3] > gameField.height){
+      if(prevGold != gold || prevEm != emerald || (current[3]*current[1]+parseInt(current[4])) < -200 || (current[3]*current[1]+parseInt(current[4])) > gameField.width+200 || current[3] > gameField.height){
       	obs[i] = obs[obs.length-1];
         obs.length--;
         len--;
@@ -89,17 +94,21 @@ function updateArray(){
 
 function newObj(){
 	var string = "";
+	if(Math.floor(Math.random()*100) == 1){
+		string += obstaclez.length-1;
+	}else{
   if(currentShip == 8){
-  string += randInt(1,obstaclez.length-1) + ",";
+  string += randInt(1,obstaclez.length-2) + ",";
   }else if(currentShip == 9){
-	  var test = randInt(0,obstaclez.length-1);
+	  var test = randInt(0,obstaclez.length-2);
 	  if(test == 1){
 		test = 0;	  
 	  }
    string += test + ",";
   }else{
-  string += randInt(2,obstaclez.length-1) + ",";
+  string += randInt(2,obstaclez.length-2) + ",";
   }
+	}
   string += (randInt(-10,10)/20) + ",";
   string += randInt(6,8) + ",";
   string += "-200";
@@ -267,8 +276,10 @@ function locationClicked(x,y,width,height){
 function titleScreen(){
 		drawFont('Rocket',gameField.width/5,gameField.width/2+5,100,'white');
     drawFont(Math.floor(highscore),50,gameField.width-10*(Math.floor(highscore) + "").length-20,20,"white");
-	ctx.drawImage(objImagen(obstaclez.length-1),20,20,30,30);
+	ctx.drawImage(objImagen(obstaclez.length-2),20,20,30,30);
 	drawFont(Math.floor(gold),30,65,20,"white");
+	ctx.drawImage(objImagen(obstaclez.length-1),20,52,30,30);
+	drawFont(Math.floor(emerald),30,65,52,"white");
     drawCylander('Play',gameField.width/2,120+gameField.width/5,300,35);
     if(locationClicked(gameField.width/2-75,120+gameField.width/5-20,150,41)){
     	place = 1;
@@ -548,5 +559,5 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.9.7
+//Version 1.9.8
 //Gold Update
