@@ -95,9 +95,8 @@ function updateArray(){
 function newObj(){
 	var string = "";
 	if(randInt(1,10) == 1){
-		string += obstaclez.length-1;
-	}else{
-  if(currentShip == 8){
+		string += obstaclez.length-1 + ",";
+	}else if(currentShip == 8){
   string += randInt(1,obstaclez.length-2) + ",";
   }else if(currentShip == 9){
 	  var test = randInt(0,obstaclez.length-2);
@@ -108,7 +107,6 @@ function newObj(){
   }else{
   string += randInt(2,obstaclez.length-2) + ",";
   }
-	}
   string += (randInt(-10,10)/20) + ",";
   string += randInt(6,8) + ",";
   string += "-200";
@@ -559,5 +557,5 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.10.0
+//Version 1.10.1
 //Gold Update
