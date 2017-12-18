@@ -44,7 +44,7 @@ document.body.appendChild(gameField);
 var ctx = gameField.getContext("2d");
 var place = 0;
 var currentShip = 0;
-var cleverLosePhrases = ["Missed it by thaaaaat much...","Aaaaah! Missed it by that much!","Sooooo Close","One more time please","As my Grandmother used to say, watch out for the astroid!","Come on, try harder!","I believe in you","Oooops...","NooooOOooOooo...","Impossible!","And he was never heard from again...","Whelp! That one failed, might as well do another one...","[Player] left the game...","Test Subject 1032 is now MIA","Staaaaaaars...","Is the glass half full? Or is it empty?","What came first, The Chicken or the Egg?","Yeeeeeeeeeeeeee","Yeet","I think I saw a Yeti over there somewhere...","Did you know that 100% of human beings die from death?","Glad I wasn't him...","That was NASTY","SPLAT!","Ahh Dang... There goes another one...","We have limited pilots, you know...","Watching that was funnier than pretending to be a carrot!"];
+var cleverLosePhrases = ["Missed it by thaaaaat much...","Aaaaah! Missed it by that much!","Sooooo Close","One more time please","As my Grandmother used to say, watch out for the astroid!","Come on, try harder!","I believe in you","Oooops...","NooooOOooOooo...","Impossible!","And he was never heard from again...","Whelp! That one failed, might as well do another one...","[Player] left the game...","Test Subject 1032 is now MIA","Staaaaaaars...","Is the glass half full? Or is it empty?","What came first, The Chicken or the Egg?","Yeeeeeeeeeeeeee","Yeet","I think I saw a Yeti over there somewhere...","Did you know that 100% of human beings die from death?","Glad I wasn't him...","That was NASTY","SPLAT!","Ahh Dang... There goes another one...","We have limited pilots, you know...","Watching that was funnier than pretending to be a carrot!","Oh. Rip."];
 var obs = new Array(0);
 newObj();
 updateArray();
@@ -309,6 +309,10 @@ document.addEventListener('keyup', function(event) {
 var dg = 0;
 var cssd = 0;
 function play(){
+	ctx.drawImage(objImagen(obstaclez.length-2),20,10,30,30);
+	drawFont(Math.floor(gold),30,65,10,"white");
+	ctx.drawImage(objImagen(obstaclez.length-1),20,37,30,30);
+	drawFont(Math.floor(emerald),30,65,37,"white");
 	distance += speedMs/2000;
   
   if(distance > highscore){
@@ -557,5 +561,5 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.10.3
+//Version 1.10.4`
 //Gold Update
