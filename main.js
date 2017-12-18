@@ -59,19 +59,27 @@ function updateArray(){
   }
   var len = obs.length;
   var i;
+	var c0;
   for(i = 0; i < len; i++){
   	if(obs[i] != null && obs[i] != ""){
     	var current = obs[i].split(",");
-      if((parseInt(current[3]) < ypos+140) && (parseInt(current[3]) > ypos-55) && (current[3]*current[1]+parseInt(current[4])) < xpos+55 && (current[3]* current[1]+parseInt(current[4])) > xpos+10 && (current[3]* current[1]+parseInt(current[4])) > 0 && (current[3]* current[1]+parseInt(current[4])) < gameField.width){
+	c0 = parseInt(current[0]);
+		c1 = parseInt(current[1]);
+		c2 = parseInt(current[2]);
+		c3 = parseInt(current[3]);
+		c4 = parseInt(current[4]);
+		c5 = parseInt(current[5]);
+		c6 = parseInt(current[6]);
+      if(c3 < ypos+140) && c3 > ypos-55) && (c3*c1+c4) < xpos+55 && (c3*c1+c4) > xpos+10 && (c3*c1+c4) > 0 && (c3*c1+c4) < gameField.width){
       	place = 3;
       }
-      if((current[3]*current[1]+parseInt(current[4])) < -100 || (current[3]*current[1]+parseInt(current[4])) > gameField.width+100 || current[3] > gameField.height){
+      if((c3*c1+c4) < -100 || (c3*c1+c4) > gameField.width+100 || c3 > gameField.height){
       	obs[i] = obs[obs.length-1];
         obs.length--;
         len--;
       }else{
-      current[3] = (parseInt(current[2]) + parseInt(current[3]))*speedMs/20 + "";
-      current[5] = (parseInt(current[5]) + parseInt(current[6]))*speedMs/20 + "";
+      c3 = (c2 + c3)*speedMs/20 + "";
+      c5 = (c5 + c6)*speedMs/20 + "";
       obs[i] = current[0] + "," + current[1] + "," + current[2] + "," + current[3] + "," + current[4]  + "," + current[5]  + "," + current[6];   
       }
 		}
