@@ -548,4 +548,4 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.7.7
+//Version 1.7.8
