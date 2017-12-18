@@ -94,7 +94,7 @@ function updateArray(){
 
 function newObj(){
 	var string = "";
-	if(Math.floor(Math.random()*100) == 1){
+	if(Math.floor(Math.random()*10) == 1){
 		string += obstaclez.length-1;
 	}else{
   if(currentShip == 8){
@@ -276,10 +276,10 @@ function locationClicked(x,y,width,height){
 function titleScreen(){
 		drawFont('Rocket',gameField.width/5,gameField.width/2+5,100,'white');
     drawFont(Math.floor(highscore),50,gameField.width-10*(Math.floor(highscore) + "").length-20,20,"white");
-	ctx.drawImage(objImagen(obstaclez.length-2),20,20,30,30);
-	drawFont(Math.floor(gold),30,65,20,"white");
-	ctx.drawImage(objImagen(obstaclez.length-1),20,52,30,30);
-	drawFont(Math.floor(emerald),30,65,52,"white");
+	ctx.drawImage(objImagen(obstaclez.length-2),20,10,30,30);
+	drawFont(Math.floor(gold),30,65,10,"white");
+	ctx.drawImage(objImagen(obstaclez.length-1),20,37,30,30);
+	drawFont(Math.floor(emerald),30,65,37,"white");
     drawCylander('Play',gameField.width/2,120+gameField.width/5,300,35);
     if(locationClicked(gameField.width/2-75,120+gameField.width/5-20,150,41)){
     	place = 1;
