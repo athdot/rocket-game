@@ -63,6 +63,7 @@ function updateArray(){
   var len = obs.length;
   var i = 0;
   while(i < len){
+	  var prevGold = gold;
   	if(obs[i] != null && obs[i] != ""){
     	var current = obs[i].split(",");
       if(((parseInt(current[3]) < ypos+110) && (parseInt(current[3]) > ypos-55) && (current[3]*current[1]+parseInt(current[4])) < xpos+100 && (current[3]* current[1]+parseInt(current[4])) > xpos-50 && (current[3]* current[1]+parseInt(current[4])) > 0 && (current[3]* current[1]+parseInt(current[4])) < gameField.width)){
@@ -70,11 +71,9 @@ function updateArray(){
 	      place = 3;
 	}else{
 		gold++;	
-		obs[i] = obs[obs.length-1];
-		obs.length--;
 	}
       }
-      if(((current[3]*current[1]+parseInt(current[4])) < -200 || (current[3]*current[1]+parseInt(current[4])) > gameField.width+200 || current[3] > gameField.height)){
+      if(prevGold != gold || (current[3]*current[1]+parseInt(current[4])) < -200 || (current[3]*current[1]+parseInt(current[4])) > gameField.width+200 || current[3] > gameField.height){
       	obs[i] = obs[obs.length-1];
         obs.length--;
         len--;
@@ -548,5 +547,5 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.9.2
+//Version 1.9.3
 //Gold Update
