@@ -14,6 +14,7 @@ var obstaclez = [
 "obstacles/hal.png",
 "obstacles/ast.png",
 "obstacles/earth.png",
+"images/coin.png",
 ];
 var skin = [
 "ships/sputnik.png",
@@ -31,6 +32,7 @@ var skin = [
 var deathImages = [
 "death/death1.png",
 ]
+var gold = 0;
 var gameField = document.createElement("canvas");
 gameField.width = window.innerWidth;
 gameField.height = window.innerHeight;
@@ -63,8 +65,12 @@ function updateArray(){
   while(i < len){
   	if(obs[i] != null && obs[i] != ""){
     	var current = obs[i].split(",");
-      if((parseInt(current[3]) < ypos+110) && (parseInt(current[3]) > ypos-55) && (current[3]*current[1]+parseInt(current[4])) < xpos+100 && (current[3]* current[1]+parseInt(current[4])) > xpos-50 && (current[3]* current[1]+parseInt(current[4])) > 0 && (current[3]* current[1]+parseInt(current[4])) < gameField.width){
-      	place = 3;
+      if(((parseInt(current[3]) < ypos+110) && (parseInt(current[3]) > ypos-55) && (current[3]*current[1]+parseInt(current[4])) < xpos+100 && (current[3]* current[1]+parseInt(current[4])) > xpos-50 && (current[3]* current[1]+parseInt(current[4])) > 0 && (current[3]* current[1]+parseInt(current[4])) < gameField.width)){
+      	if(i != obs.length-1){
+	      place = 3;
+	}else{
+		gold++;	
+	}
       }
       if((current[3]*current[1]+parseInt(current[4])) < -200 || (current[3]*current[1]+parseInt(current[4])) > gameField.width+200 || current[3] > gameField.height){
       	obs[i] = obs[obs.length-1];
@@ -539,4 +545,5 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.8.3
+//Version 1.8.4
+//Gold Update
