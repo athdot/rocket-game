@@ -70,7 +70,8 @@ function updateArray(){
 	      place = 3;
 	}else{
 		gold++;	
-		obj[i] = null;
+		obs[i] = obs[obs.length-1];
+		obs.length--;
 	}
       }
       if(((current[3]*current[1]+parseInt(current[4])) < -200 || (current[3]*current[1]+parseInt(current[4])) > gameField.width+200 || current[3] > gameField.height)){
