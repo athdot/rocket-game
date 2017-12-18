@@ -60,10 +60,16 @@ function updateArray(){
   var len = obs.length;
   var i;
 	var c0;
+	var c1;
+	var c2;
+	var c3;
+	var c4;
+	var c5;
+	var c6;
   for(i = 0; i < len; i++){
   	if(obs[i] != null && obs[i] != ""){
     	var current = obs[i].split(",");
-	c0 = parseInt(current[0]);
+		c0 = parseInt(current[0]);
 		c1 = parseInt(current[1]);
 		c2 = parseInt(current[2]);
 		c3 = parseInt(current[3]);
@@ -80,7 +86,7 @@ function updateArray(){
       }else{
       c3 = (c2 + c3)*speedMs/20 + "";
       c5 = (c5 + c6)*speedMs/20 + "";
-      obs[i] = current[0] + "," + current[1] + "," + current[2] + "," + current[3] + "," + current[4]  + "," + current[5]  + "," + current[6];   
+      obs[i] = c0 + "," + c1 + "," + c2 + "," + c3 + "," +  c4  + "," + c5  + "," + c6;   
       }
 		}
   }
@@ -147,9 +153,7 @@ gameField.oncontextmenu = function (e) {
 
 var starSpeed = 0;
 var stars = new Array(100);
-var i = 0;
-var len = stars.length;
-for(i = 0; i < len; i++){
+for(var i = 0; i < stars.length; i++){
 		if(randInt(0,gameField.height) == 1){
     	var ret = 1;
     }else{
@@ -161,8 +165,8 @@ for(i = 0; i < len; i++){
 function renderStars(){
 	var i;
 	var len = stars.length;
-	var x = stars[i].split(",")[0];
-	var y = stars[i].split(",")[1];
+	var x;
+	var y;
 	for(i = 0; i < len; i++){
   	if(stars[i].split(",")[2] === "1"){
 		x = stars[i].split(",")[0];
@@ -173,7 +177,7 @@ function renderStars(){
   	}
     
     if(randInt(0,gameField.height) == 1){
-    	stars[i] = x + "," + y + ",1";
+    	stars[i] = stars[i].split(",")[0] + "," + stars[i].split(",")[1] + ",1";
     }
     
     if(parseInt(y) >= gameField.height){
