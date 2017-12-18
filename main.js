@@ -94,7 +94,7 @@ function updateArray(){
 
 function newObj(){
 	var string = "";
-	if(Math.floor(Math.random()*10) == 1){
+	if(randInt(1,10) == 1){
 		string += obstaclez.length-1;
 	}else{
   if(currentShip == 8){
@@ -559,5 +559,5 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.9.9
+//Version 1.10.0
 //Gold Update
