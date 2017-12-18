@@ -504,7 +504,7 @@ function run() {
         d = new Date();
         currentMs = d.getMilliseconds();
         ratioMs = currentMs - (previousMs + 20);
-        speedMs - ratioMs;
+        speedMs -= ratioMs;
         clear();
         renderStars();
         if (place == 0) {
@@ -532,7 +532,7 @@ function run() {
         }
         previousMs = currentMs;
         at();
-    }, 25);
+    }, speedMs);
     //average speed is 20ms
 }
 var d = new Date();
@@ -546,4 +546,4 @@ run();
 function at(){
     run();   
 }
-//Version 1.8.1
+//Version 1.8.2
