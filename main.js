@@ -559,5 +559,5 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.9.8
+//Version 1.9.9
 //Gold Update
