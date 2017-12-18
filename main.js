@@ -65,7 +65,7 @@ function updateArray(){
       if((parseInt(current[3]) < ypos+140) && (parseInt(current[3]) > ypos-55) && (current[3]*current[1]+parseInt(current[4])) < xpos+55 && (current[3]* current[1]+parseInt(current[4])) > xpos+10 && (current[3]* current[1]+parseInt(current[4])) > 0 && (current[3]* current[1]+parseInt(current[4])) < gameField.width){
       	place = 3;
       }
-      if((current[3]*current[1]+parseInt(current[4])) < -100 || (current[3]*current[1]+parseInt(current[4])) > gameField.width+100 || current[3] > gameField.height){
+      if((current[3]*current[1]+parseInt(current[4])) < -200 || (current[3]*current[1]+parseInt(current[4])) > gameField.width+200 || current[3] > gameField.height){
       	obs[i] = obs[obs.length-1];
         obs.length--;
         len--;
@@ -538,4 +538,4 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.7.7
+//Version 1.7.8
