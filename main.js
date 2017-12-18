@@ -267,6 +267,7 @@ function locationClicked(x,y,width,height){
 function titleScreen(){
 		drawFont('Rocket',gameField.width/5,gameField.width/2+5,100,'white');
     drawFont(Math.floor(highscore),50,gameField.width-10*(Math.floor(highscore) + "").length-20,20,"white");
+	ctx.drawImage(objImagen(obstaclez.length-1),20,20,50,50);
 	drawFont(Math.floor(gold),50,50,20,"white");
     drawCylander('Play',gameField.width/2,120+gameField.width/5,300,35);
     if(locationClicked(gameField.width/2-75,120+gameField.width/5-20,150,41)){
@@ -547,5 +548,5 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.9.3
+//Version 1.9.4
 //Gold Update
