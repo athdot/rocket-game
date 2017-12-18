@@ -66,7 +66,7 @@ function updateArray(){
   	if(obs[i] != null && obs[i] != ""){
     	var current = obs[i].split(",");
       if(((parseInt(current[3]) < ypos+110) && (parseInt(current[3]) > ypos-55) && (current[3]*current[1]+parseInt(current[4])) < xpos+100 && (current[3]* current[1]+parseInt(current[4])) > xpos-50 && (current[3]* current[1]+parseInt(current[4])) > 0 && (current[3]* current[1]+parseInt(current[4])) < gameField.width)){
-      	if(i != obs.length-1){
+      	if(i != obs.length-2){
 	      place = 3;
 	}else{
 		gold++;	
@@ -266,6 +266,8 @@ function locationClicked(x,y,width,height){
 function titleScreen(){
 		drawFont('Rocket',gameField.width/5,gameField.width/2+5,100,'white');
     drawFont(Math.floor(highscore),50,gameField.width-10*(Math.floor(highscore) + "").length-20,20,"white");
+	ctx.drawImage(objImagen(obj.length-1),20,20,50,50);
+	drawFont(Math.floor(gold),50,50,20,"white");
     drawCylander('Play',gameField.width/2,120+gameField.width/5,300,35);
     if(locationClicked(gameField.width/2-75,120+gameField.width/5-20,150,41)){
     	place = 1;
