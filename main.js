@@ -532,7 +532,7 @@ function run() {
         }
         previousMs = currentMs;
         at();
-    }, 20);
+    }, 10);
     //average speed is 20ms
 }
 var d = new Date();
@@ -546,4 +546,4 @@ run();
 function at(){
     run();   
 }
-//Version 1.7.9
+//Version 1.8.0
