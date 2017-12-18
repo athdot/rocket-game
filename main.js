@@ -70,6 +70,9 @@ function updateArray(){
 	      place = 3;
 	}else{
 		gold++;	
+		obs[i] = obs[obs.length-1];
+        	obs.length--;
+        	len--;
 	}
       }
       if((current[3]*current[1]+parseInt(current[4])) < -200 || (current[3]*current[1]+parseInt(current[4])) > gameField.width+200 || current[3] > gameField.height){
@@ -546,5 +549,5 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.8.8
+//Version 1.8.9
 //Gold Update
