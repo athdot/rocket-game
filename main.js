@@ -62,9 +62,7 @@ function updateArray(){
   }
   var len = obs.length;
   var i = 0;
-	var rm = 0;
   while(i < len){
-	  rm = 0;
   	if(obs[i] != null && obs[i] != ""){
     	var current = obs[i].split(",");
       if(((parseInt(current[3]) < ypos+110) && (parseInt(current[3]) > ypos-55) && (current[3]*current[1]+parseInt(current[4])) < xpos+100 && (current[3]* current[1]+parseInt(current[4])) > xpos-50 && (current[3]* current[1]+parseInt(current[4])) > 0 && (current[3]* current[1]+parseInt(current[4])) < gameField.width)){
@@ -72,10 +70,10 @@ function updateArray(){
 	      place = 3;
 	}else{
 		gold++;	
-		rm = 1;
+		obj[i] = null;
 	}
       }
-      if(rm = 1||((current[3]*current[1]+parseInt(current[4])) < -200 || (current[3]*current[1]+parseInt(current[4])) > gameField.width+200 || current[3] > gameField.height)){
+      if(((current[3]*current[1]+parseInt(current[4])) < -200 || (current[3]*current[1]+parseInt(current[4])) > gameField.width+200 || current[3] > gameField.height)){
       	obs[i] = obs[obs.length-1];
         obs.length--;
         len--;
