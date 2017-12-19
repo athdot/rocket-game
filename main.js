@@ -373,9 +373,9 @@ function play(){
 var skinPage = 0;
 var line = 0;
 function skinScreen(){
-	ctx.drawImage(objImagen(obstaclez.length-2),gameField.width-70,10,30,30);
+	ctx.drawImage(objImagen(obstaclez.length-2),gameField.width-110,10,30,30);
 	drawFont(Math.floor(gold),30,gameField.width-50,10,"white");
-	ctx.drawImage(objImagen(obstaclez.length-1),gameField.width-70,37,30,30);
+	ctx.drawImage(objImagen(obstaclez.length-1),gameField.width-110,37,30,30);
 	drawFont(Math.floor(emerald),30,gameField.width-50,37,"white");
 	
 	var across = Math.floor(gameField.width/100);
