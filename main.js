@@ -373,10 +373,10 @@ function play(){
 var skinPage = 0;
 var line = 0;
 function skinScreen(){
-	ctx.drawImage(objImagen(obstaclez.length-2),gameField.width-20,10,30,30);
-	drawFont(Math.floor(gold),gameField.width-30,65,10,"white");
-	ctx.drawImage(objImagen(obstaclez.length-1),gameField.width-20,37,30,30);
-	drawFont(Math.floor(emerald),gameField.width-30,65,37,"white");
+	ctx.drawImage(objImagen(obstaclez.length-2),20,70,30,30);
+	drawFont(Math.floor(gold),30,65,70,"white");
+	ctx.drawImage(objImagen(obstaclez.length-1),20,97,30,30);
+	drawFont(Math.floor(emerald),30,65,97,"white");
 	
 	var across = Math.floor(gameField.width/100);
   var up = Math.floor(gameField.height/100);
@@ -566,5 +566,5 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.10.5
+//Version 1.10.6
 //Gold and Emerald Update
