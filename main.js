@@ -53,10 +53,10 @@ function updateArray(){
 	if(n < 0){
 		n = 0;	
 	}
-	if(distance*3 < 20){
+	if(distance*3 < 16){
 	var newArray = randInt(1,100-distance*12);
   }else{
-  var newArray = randInt(1,100-20*4);
+  var newArray = randInt(1,100-16*4);
   }
 
   if(newArray == 1 || obs.length < 3){
@@ -566,5 +566,5 @@ if(previousMs < 0){
 var currentMs = beginMs;
 run();
 
-//Version 1.10.6
+//Version 1.10.7
 //Gold and Emerald Update
