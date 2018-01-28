@@ -29,8 +29,8 @@
       },10);
       var s = setInterval(function(){
         var y = document.getElementById("frame"); 
-        y.style.opacity += 0.05;
-        if(y.style.opacity > 1){
+        y.style.opacity = parseInt(y.style.opacity)+0.05;
+        if(parseInt(y.style.opacity) > 1){
           clearInterval(s); 
         }
       },100);
