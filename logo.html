@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rocket</title>
+  </head>
+  <body style="background-color: black;">
+    <img id="logo1" src="https://athdot.github.io/rocket-game/logo.png" style="opacity: 0.2; position:absolute; top:50%; left: 50%; transform:translate(-50%,-50%);" />
+    <script>
+    	var im = document.getElementById("logo1");
+      var originH = im.height;
+      var originW = im.width;
+      if(originW/window.innerWidth > originH/window.innerHeight){
+      	im.width = window.innerWidth;
+      }else if(originW/window.innerWidth <originH/window.innerHeight){
+      	im.height = window.innerHeight;
+      }
+      var opacity = 0;
+      var inmt1 = setInterval(function(){
+      	im.style.opacity = 1-Math.abs(10-opacity)/10;
+        opacity+=0.025;
+        if(1-Math.abs(10-opacity)/10 < 0){
+        var f = document.createElement("iframe");
+        f.style="position:absolute; top:0; left: 0; width: 100%; height: 100vh; border: none;";
+        f.src = "beta.html";
+        	document.body.appendChild(f);
+        	clearInterval(inmt1);
+        }
+      },10);
+ 
+    </script>
+    </body>
+</html>
