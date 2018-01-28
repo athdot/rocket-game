@@ -20,13 +20,20 @@
         opacity+=0.025;
         if(1-Math.abs(10-opacity)/10 < 0){
         var f = document.createElement("iframe");
-        f.style="position:absolute; top:0; left: 0; width: 100%; height: 100vh; border: none;";
+        f.id="frame";
+        f.style="position:absolute; top:0; left: 0; width: 100%; height: 100vh; border: none; opacity: 0;";
         f.src = "beta.html";
         	document.body.appendChild(f);
         	clearInterval(inmt1);
         }
       },10);
- 
+      var s = setInterval(function(){
+        var y = document.getElementById("frame"); 
+        y.style.opacity += 0.05;
+        if(y.style.opacity > 1){
+          clearInterval(s); 
+        }
+      },100);
     </script>
     </body>
 </html>
