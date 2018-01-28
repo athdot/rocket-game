@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rocket Game - Beta 1.1.4</title>
+    <style>
+      @font-face {
+        font-family: 'spaceFont';
+        src: url(files/trench100free.otf);
+      }
+      html, body {margin: 0; height: 100%; overflow: hidden}
+    </style>
+  </head>
+  <body>
+    <div id="images">
+      <div id="rotations"></div>
+      <img id="imss" src="images/arrow.png" style="display:none" />
+      <img id="logo1" src="logo.png" style="display:none" />
+      <div id="obstacles">
+        <!-- Obstacles are stored here -->
+        <img id="o1" src="obstacles/poop.png" style="display:none" />
+        <img id="o2" src="obstacles/dstar.png" style="display:none" />
+        <img id="o3" src="obstacles/hal.png" style="display:none" />
+        <img id="o4" src="obstacles/ast.png" style="display:none" />
+        <img id="o5" src="obstacles/earth.png" style="display:none" />
+        <img id="o6" src="images/coin.png" style="display:none" />
+        <img id="o7" src="images/emerald.png" style="display:none" />
+      </div>
+      <div id="skins">
+        <!-- Skins  for ships are stored here -->
+        <img id="s1" src="ships/sputnik.png" style="display:none" />
+        <img id="s2" src="ships/soyuz.png" style="display:none" />
+        <img id="s3" src="ships/spaceShuttle.png" style="display:none" />
+        <img id="s4" src="ships/sat.png" style="display:none" />
+        <img id="s5" src="ships/redScare.png" style="display:none" />
+        <img id="s6" src="ships/arrowShip.png" style="display:none" />
+        <img id="s7" src="ships/police.png" style="display:none" />
+        <img id="s8" src="ships/box.png" style="display:none" />
+        <img id="s9" src="ships/xwing.png" style="display:none" />
+        <img id="s10" src="ships/plunger.png" style="display:none" />
+        <img id="s11" src="ships/nyan.png" style="display:none" />
+      </div>
+      <div id="deathImages">
+        <img id="s1" src="death/death1.png" style="display:none" />
+      </div>
+    </div>
+    <!-- All Images have been imported! -->
+    <div id="canvasFrame" style="position:absolute; top: 0; left: 0; width: 100%; height: 100vh; background-color:rgb(0,26,51);">
+    </div>
+    <div id="starStorage" style="position:absolute; left: 0; top: 0; width: 100%; height: 100vh;">
+    </div>
+    <div id="buttonLayer" style="position:absolute; left: 0; top: 0; width: 100%; height: 100vh">
+    
+    </div>
+    <div id="l0" style="position:absolute; top: 0; left: 0; width: 100%; height: 100vh;">
+      <p style="font-family: spaceFont; color: white; position:absolute; left: 50%; transform:translate(-50%);" id="mm">
+        Rocket
+        <button id="play" onclick="levelIs(1)" style="background-color: white; border: none; border-radius: 30px; width: 140px; height: 35px; outline:0; color: rgb(0,27,51); font-family: spaceFont; font-size: 30px;
+      position:absolute; top: 0; left: 50%; transform:translate(-50%);
+      ">
+        Play
+      </button>
+      <button id="ship" onclick="levelIs(2)" style="background-color: white; border: none; border-radius: 30px; width: 140px; height: 35px; outline:0; color: rgb(0,27,51); font-family: spaceFont; font-size: 30px;
+      position:absolute; top: 0; left: 50%; transform:translate(-50%);
+      ">
+        Ships
+      </button>
+        <script>
+        	document.getElementById("mm").style.fontSize = window.innerWidth/5 + "px";
+          document.getElementById("mm").style.top = -window.innerWidth/5+window.innerHeight/4 + "px";
+          document.getElementById("play").style.top = window.innerWidth/5.1 + "px";
+          document.getElementById("ship").style.top = window.innerWidth/5.1+50 + "px";
+          window.onresize = function(){
+          document.getElementById("mm").style.fontSize = window.innerWidth/5 + "px";
+            document.getElementById("mm").style.top = -window.innerWidth/5+window.innerHeight/4 + "px";
+            document.getElementById("play").style.top = window.innerWidth/5.1 + "px";
+            document.getElementById("ship").style.top = window.innerWidth/5.1+50 + "px";
+          }
+        </script>
+      </p>
+    </div>
+    <div id="scriptHouser">
+    <!-- Scripts -->
+    <script>
+    	//Instance Variables
+      var cleverLosePhrases = [
+      "Missed it by thaaaaat much...",
+      "Aaaaah! Missed it by that much!",
+      "Sooooo Close",
+      "One more time please",
+      "As my Grandmother used to say, watch out for the astroid!",
+      "Come on, try harder!",
+      "I believe in you",
+      "Oooops...",
+      "NooooOOooOooo...",
+      "Impossible!",
+      "And he was never heard from again...",
+      "Whelp! That one failed, might as well do another one...",
+      "[Player] left the game...",
+      "Test Subject 1032 is now MIA",
+      "Staaaaaaars...",
+      "Is the glass half full? Or is it empty?",
+      "What came first, The Chicken or the Egg?",
+      "Yeeeeeeeeeeeeee",
+      "Yeet",
+      "I think I saw a Yeti over there somewhere...",
+      "Did you know that 100% of human beings die from death?",
+      "Glad I wasn't him...",
+      "That was NASTY",
+      "SPLAT!",
+      "Ahh Dang... There goes another one...",
+      "We have limited pilots, you know...",
+      "Watching that was funnier than pretending to be a carrot!",
+      "Oh. Rip."];
+			//This Function is to make a render of the image
+      function createElement(id){
+      	var temp = document.getElementById(id);
+        var temp2 = temp.cloneNode(true);
+        document.body.appendChild(temp2);
+        temp2.id = "";
+        temp2.style = "position:absolute; display:none;";
+        return temp2
+      }
+      function render(input,bool){
+      	if(bool){
+        	input.style.display = "unset";
+        }else{
+        	input.style.display = "none";
+        }
+      }
+      function removeElement(input){
+      	input.remove();
+      }
+      function rotate(input,degree){
+      	input.style.transform = "rotate("+degree+"deg)"
+      }
+      function translate(input,x,y){
+      	input.style.top = y + "px";
+        input.style.left = x + "px";
+      }
+      function size(input,width,height){
+      	input.width = width;
+        input.height = height;
+      }
+      //all render items have been created.
+      var mouseDown = false;
+      var mouseX = null;
+      var mouseY = null;
+      function mouseD() { 
+ 			  mouseDown = true;
+			}
+			function mouseU() {
+  			mouseDown = false;
+			}
+    	function printMousePos(event) {
+      	if(mouseDown && event.clientX > -1 && event.clientY > -1 && event.clientX < window.innerWidth+1 && event.clientY < window.innerHeight+1){
+  				mouseX = event.clientX;
+          mouseY = event.clientY;
+        }else{
+        	mouseX = null;
+          mouseY = null;
+        }
+			}
+      //addEventListeners for mouseClicks...
+			document.addEventListener("mousedown",mouseD);
+			document.addEventListener("mouseup",mouseU)
+			document.addEventListener("mousemove", printMousePos);
+      //star method here:
+      //housing div name: starSorage
+      function updateStars(starSpeed){
+      	var ammount = document.getElementById("starStorage").childElementCount;
+        for(var i = 1; i < ammount+1; i++){
+        	var temporary = document.getElementById("st" + i);
+          if(temporary.style.top.indexOf("px") > -1){
+         var yen = temporary.style.top.substring(0,temporary.style.top.length-2);
+         		var yen2 = parseInt(yen);
+            if(yen2 > window.innerHeight+100){
+              temporary.style.left =  Math.round(Math.random*window.innerWidth) + "px";
+              yen2 = -Math.round(Math.random()*200);
+            }
+            yen2 += starSpeed;
+            temporary.style.top = yen2 + "px";
+          }
+        }
+      }
+      function newStar(){
+      	var uno = document.createElement("div");
+        uno.style = "position:absolute; background-color:white; width: 1px; height: 1px; top:0px; left: " + Math.round(Math.random()*window.innerWidth) +"px;";
+        uno.id = "st" + (parseInt(document.getElementById("starStorage").childElementCount)+1);
+        document.getElementById("starStorage").appendChild(uno);
+      }
+      //Game variables:
+      var shipNum = 0;
+      var gold = 0;
+      var emerald = 0;
+      var place = 0;
+      var purchasedShips = [
+      	0,0,
+        50,0,
+        50,0,
+        75,0,
+        100,0,
+        150,0,
+        150,1,
+        200,5,
+        200,5,
+        150,6,
+        0,7,
+        0,10,
+      ];
+      var speeds = 3;
+      
+      //level set functions
+      function levelIs(name){
+      	place = name;
+      }
+      
+      
+      setInterval(function(){
+      	//star
+      	if(Math.round(Math.random()*10) == 1 && document.getElementById("starStorage").childElementCount < Math.round(window.innerWidth/25)){
+        	newStar();
+        }
+      	updateStars(speeds);
+        //endStar
+        if(place != 0){
+        	document.getElementById("l0").style.display = "none";
+        }
+        if(place == 0){
+        	document.getElementById("l0").style.display = "unset";
+        }else if(place == 1){
+        	
+        }else if(place == 2){
+        	
+        }else if(place == 3){
+        	
+        }
+        
+      },10);
+    </script>
+    </div>
+  </body>
+</html>
