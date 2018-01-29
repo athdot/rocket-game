@@ -211,11 +211,13 @@
       
       //level set functions
       function levelIs(name){
+	render(playShip,false);
       	place = name;
       }
-	    
+	var playShip = createElement("s"+(shipNum+1));
+	size(playShip,100,100);
 	function game(){
-		
+		render(playShip,true);
 	}
       
 	function death(){
