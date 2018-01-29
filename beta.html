@@ -217,7 +217,8 @@
       	place = name;
       }
 	var playShip = createElement("s"+(shipNum+1));
-	size(playShip,110,110);
+	var siz = Math.floor(window.innerWidth/7);
+	size(playShip,siz,siz);
 	function game(){
 		render(playShip,true);
 		translate(playShip,shipX,shipY);
