@@ -234,7 +234,9 @@
 		rotate(playShip,dg);
 		shipY -= (shipY-(window.innerHeight-(30+playShip.height)))/15;
 		shipX = shipX + dg/5;
-  
+  		if(shipX != mouseX){
+			cssd = 10*(shipX-mouseX)/Math.abs(shipX-mouseX);	
+		}
 		if(dg > cssd){
   			dg -= (dg-cssd)/30;
   		}else if(dg < cssd){
