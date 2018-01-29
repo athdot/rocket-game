@@ -230,11 +230,11 @@
 	var cssd = 0;
 	function game(){
 		render(playShip,true);
-		translate(playShip,shipX,shipY);
+		translate(playShip,shipX-playShip.width/2,shipY);
 		rotate(playShip,dg);
 		shipY -= (shipY-(window.innerHeight-(30+playShip.height)))/15;
 		shipX = shipX + dg/5;
-  		if(mouseX != null && (shipX-5 < mouseX || shipX+5 > mouseX)){
+  		if(mouseX != null && (shipX-15 < mouseX || shipX+15 > mouseX)){
 			cssd = -30*(shipX-mouseX)/Math.abs(shipX-mouseX);	
 		}
 		if(!mouseDown){
