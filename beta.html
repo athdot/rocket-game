@@ -211,7 +211,7 @@
       
       //level set functions
 	    var shipX = window.innerWidth/2-50;
-	    var shipY = window.innerHeight+20;
+	    var shipY = window.innerHeight-150;
       function levelIs(name){
 	render(playShip,false);
       	place = name;
@@ -221,7 +221,6 @@
 	function game(){
 		render(playShip,true);
 		translate(playShip,shipX,shipY);
-		shipY -= (shipY-window.innerHeight-150)/4
 	}
       
 	function death(){
