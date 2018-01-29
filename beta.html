@@ -226,10 +226,25 @@
 	var playShip = createElement("s"+(shipNum+1));
 	var siz = Math.floor(window.innerWidth/10+30);
 	size(playShip,siz,siz);
+	var dg = 0;
+	var cssd = 0;
 	function game(){
 		render(playShip,true);
 		translate(playShip,shipX,shipY);
 		shipY -= (shipY-(window.innerHeight-(30+playShip.height)))/15;
+		shipX = shipX + dg/5;
+		if(mouseDown && shipX+75 > mouseX+15 && shipX > 60){
+    			cssd = -30;
+  		}else if(mouseDown && shipX+75 < mouseX-15 && shipX < window.innerWidth-(50+playShip.width)){
+    			cssd = 30;
+		}
+  
+		if(dg > cssd){
+  			dg -= (dg-cssd)/30;
+  		}else if(dg < cssd){
+  			dg += (cssd-dg)/30;
+ 		 }
+
 	}
       
 	function death(){
