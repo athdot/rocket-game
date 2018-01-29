@@ -235,7 +235,10 @@
 		shipY -= (shipY-(window.innerHeight-(30+playShip.height)))/15;
 		shipX = shipX + dg/5;
   		if(mouseX != null && shipX != mouseX){
-			cssd = -10*(shipX-mouseX)/Math.abs(shipX-mouseX);	
+			cssd = -30*(shipX-mouseX)/Math.abs(shipX-mouseX);	
+		}
+		if(!mouseDown){
+			cssd = 0;	
 		}
 		if(dg > cssd){
   			dg -= (dg-cssd)/30;
