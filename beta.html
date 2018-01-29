@@ -235,6 +235,8 @@
 		shipY -= (shipY-(window.innerHeight-(30+playShip.height)))/15;
 		shipX = shipX + dg/5;
 		if(shipX+15 < mouseX){
+			cssd = -30;	
+		}else if(shipX-15 > mouseX){
 			cssd = 30;	
 		}
 		
