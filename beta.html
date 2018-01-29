@@ -238,7 +238,7 @@
 			cssd = 30-((mouseX-shipX)/window.innerWidth)*30;	
 		}
 		if(shipX-30 > mouseX){
-			cssd = 30-((shipX-mouseX)/window.innerWidth)*30;	
+			cssd = -(30-((shipX-mouseX)/window.innerWidth)*30);	
 		}
 		
 		if(!mouseDown){
