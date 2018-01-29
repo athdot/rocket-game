@@ -213,7 +213,18 @@
       function levelIs(name){
       	place = name;
       }
+	    
+	function game(){
+		
+	}
       
+	function death(){
+		
+	}
+	    
+	function skinScreen(){
+		
+	}
       
       setInterval(function(){
       	//star
@@ -228,11 +239,11 @@
         if(place == 0){
         	document.getElementById("l0").style.display = "unset";
         }else if(place == 1){
-        	
+        	game();
         }else if(place == 2){
-        	
+        	death();
         }else if(place == 3){
-        	
+        	skinScreen();
         }
         
       },10);
