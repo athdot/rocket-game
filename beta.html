@@ -217,13 +217,11 @@
       	place = name;
       }
 	var playShip = createElement("s"+(shipNum+1));
-	size(playShip,100,100);
+	size(playShip,110,110);
 	function game(){
 		render(playShip,true);
 		translate(playShip,shipX,shipY);
-		if(shipY > window.innerHeight-130){
-			shipY -= (shipY-(window.innerHeight-130))/15;
-		}
+		shipY -= (shipY-(window.innerHeight-(30+playShip.height)))/15;
 	}
       
 	function death(){
