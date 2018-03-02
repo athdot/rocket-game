@@ -45,6 +45,39 @@ var ctx = gameField.getContext("2d");
 var place = 0;
 var currentShip = 0;
 var cleverLosePhrases = ["Missed it by thaaaaat much...","Aaaaah! Missed it by that much!","Sooooo Close","One more time please","As my Grandmother used to say, watch out for the astroid!","Come on, try harder!","I believe in you","Oooops...","NooooOOooOooo...","Impossible!","And he was never heard from again...","Whelp! That one failed, might as well do another one...","[Player] left the game...","Test Subject 1032 is now MIA","Staaaaaaars...","Is the glass half full? Or is it empty?","What came first, The Chicken or the Egg?","Yeeeeeeeeeeeeee","Yeet","I think I saw a Yeti over there somewhere...","Did you know that 100% of human beings die from death?","Glad I wasn't him...","That was NASTY","SPLAT!","Ahh Dang... There goes another one...","We have limited pilots, you know...","Watching that was funnier than pretending to be a carrot!","Oh. Rip."];
+//obj class
+class obstacle{
+  constructor(){
+    this.number = random(0,6);
+    this.moveDir = random(160,200);
+    this.moveSpeed = random(6,8);
+    this.x = random(0,window.innerWidth-100);
+    this.y = -200;
+    this.currentRotation = random(0,359);
+    this.rotationSpeed = random(-40,40)/10;
+  }
+  update(){
+     this.x += Math.sin(moveDir*Math.PI/180)*this.moveSpeed;
+    this.y += Math.cos(moveDir*Math.PI/180)*this.moveSpeed;
+    this.currentRotation += this.rotationSpeed;
+  }
+  getX(){
+  	return this.x;
+  }
+  getY(){
+  	return this.y;
+  }
+  getRotation(){
+	return this.currentRotation;	  
+  }
+  random(min,max){
+  	return Math.random(Math.random()*(max-min))+min;
+  }
+  toString(){
+  	return this.number;
+  }
+}
+
 var obs = new Array(0);
 newObj();
 updateArray();
@@ -62,62 +95,24 @@ function updateArray(){
   if(newArray == 1 || obs.length < 3){
   	newObj();
   }
-  var len = obs.length;
-  var i = 0;
-  while(i < len){
-	  var prevGold = gold;
-	  var prevEm = emerald;
-  	if(obs[i] != null && obs[i] != ""){
-    	var current = obs[i].split(",");
-      if(((parseInt(current[3]) < ypos+110) && (parseInt(current[3]) > ypos-55) && (current[3]*current[1]+parseInt(current[4])) < xpos+100 && (current[3]* current[1]+parseInt(current[4])) > xpos-50 && (current[3]* current[1]+parseInt(current[4])) > 0 && (current[3]* current[1]+parseInt(current[4])) < gameField.width)){
-      	if(parseInt(current[0]) < obstaclez.length-2){
-	      place = 3;
-	}else if(parseInt(current[0]) == obstaclez.length-2){
-		gold++;	
-	}else if(parseInt(current[0]) == obstaclez.length-1){
-		emerald++;	
+  //For loop run through all iterations and call update
+	for(var i = 0; i < obs.length; i++){
+		obs[i].update();	
+		//check to see if hit
+		if(obs[i].getY() < ypos+110 && obs[i].getY() > ypos-55 && obs[i].getX() < xpos+100 && obs[i].getX() > xpos-50 && obs[i].getX() > 0 && obs[i].getX() < gameField.width)){
+      			if(obs[i] < obstaclez.length-2){
+	     			 place = 3;
+			}else if(obs[i] == obstaclez.length-2){
+				gold++;	
+			}else if(obs[i] == obstaclez.length-1){
+				emerald++;	
+			}
+      }
 	}
-      }
-      if(prevGold != gold || prevEm != emerald || (current[3]*current[1]+parseInt(current[4])) < -200 || (current[3]*current[1]+parseInt(current[4])) > gameField.width+200 || current[3] > gameField.height){
-      	obs[i] = obs[obs.length-1];
-        obs.length--;
-        len--;
-      }else{
-      current[3] = (parseInt(current[2]) + parseInt(current[3]))*speedMs/20 + "";
-      current[5] = (parseInt(current[5]) + parseInt(current[6]))*speedMs/20 + "";
-      obs[i] = current[0] + "," + current[1] + "," + current[2] + "," + current[3] + "," + current[4]  + "," + current[5]  + "," + current[6];   
-      }
-		}
-    i++;
-  }
 }
 
 function newObj(){
-	var string = "";
-	if(randInt(1,100) == 1){
-		string += obstaclez.length-1 + ",";
-	}else if(currentShip == 8){
-  string += randInt(1,obstaclez.length-2) + ",";
-  }else if(currentShip == 9){
-	  var test = randInt(0,obstaclez.length-2);
-	  if(test == 1){
-		test = 0;	  
-	  }
-   string += test + ",";
-  }else{
-  string += randInt(2,obstaclez.length-2) + ",";
-  }
-  string += (randInt(-10,10)/20) + ",";
-  string += randInt(6,8) + ",";
-  string += "-200";
-  string += "," + randInt(1,(gameField.width-101));
-  string += "," + randInt(0,360);
-  string += "," + randInt(-40,40)/10;
-  obs[obs.length] = string;
-}
-
-function getObj(num){
-	return obs[num].split(",");
+  obs[obs.length] = new obstacle;
 }
 
 //mousePositions
@@ -323,11 +318,9 @@ function play(){
   var im = shipImages(currentShip,dg);
 		ctx.drawImage(im,xpos,ypos,150,150);
   for(var i = 0; i < obs.length; i++){
-  	var vs = getObj(i);
-    var ims = objImagesn(vs[0],vs[5]); 
-    var num = vs[3]*vs[1];
-    num += parseInt(vs[4]);
-  	ctx.drawImage(ims,num,vs[3],100,100);
+  	var vs = obs[i];
+    var ims = objImagesn(obs[i],obs[i].getRotation()); 
+  	ctx.drawImage(ims,obs[i].getX(),obs[i].getY(),100,100);
   }
   updateArray();
   if(starSpeed > 12*speedMs/20){
