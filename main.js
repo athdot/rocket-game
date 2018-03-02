@@ -99,7 +99,7 @@ function updateArray(){
 	for(var i = 0; i < obs.length; i++){
 		obs[i].update();	
 		//check to see if hit
-		if(obs[i].getY() < ypos+110 && obs[i].getY() > ypos-55 && obs[i].getX() < xpos+100 && obs[i].getX() > xpos-50 && obs[i].getX() > 0 && obs[i].getX() < gameField.width)){
+		if(obs[i].getY() < ypos+110 && obs[i].getY() > ypos-55 && obs[i].getX() < xpos+100 && obs[i].getX() > xpos-50 && obs[i].getX() > 0 && obs[i].getX() < gameField.width){
       			if(obs[i] < obstaclez.length-2){
 	     			 place = 3;
 			}else if(obs[i] == obstaclez.length-2){
