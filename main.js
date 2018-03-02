@@ -57,8 +57,8 @@ class obstacle{
     this.rotationSpeed = this.random(-40,40)/10;
   }
   update(){
-     this.x += Math.sin(moveDir*Math.PI/180)*this.moveSpeed;
-    this.y += Math.cos(moveDir*Math.PI/180)*this.moveSpeed;
+     this.x += Math.sin(this.moveDir*Math.PI/180)*this.moveSpeed;
+    this.y += Math.cos(this.moveDir*Math.PI/180)*this.moveSpeed;
     this.currentRotation += this.rotationSpeed;
   }
   getX(){
