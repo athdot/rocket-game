@@ -48,13 +48,13 @@ var cleverLosePhrases = ["Missed it by thaaaaat much...","Aaaaah! Missed it by t
 //obj class
 class obstacle{
   constructor(){
-    this.number = random(0,6);
-    this.moveDir = random(160,200);
-    this.moveSpeed = random(6,8);
-    this.x = random(0,window.innerWidth-100);
+    this.number = this.random(0,6);
+    this.moveDir = this.random(160,200);
+    this.moveSpeed = this.random(6,8);
+    this.x = this.random(0,window.innerWidth-100);
     this.y = -200;
-    this.currentRotation = random(0,359);
-    this.rotationSpeed = random(-40,40)/10;
+    this.currentRotation = this.random(0,359);
+    this.rotationSpeed = this.random(-40,40)/10;
   }
   update(){
      this.x += Math.sin(moveDir*Math.PI/180)*this.moveSpeed;
